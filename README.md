@@ -42,7 +42,7 @@ creating a very basic informational site that contains 4 pages: index, about, co
           
 
 
-***<a href="https://twitter.com/Crypto_Rozla"> Rozla-Dev </a> 00-00-2023***
+***<a href="https://twitter.com/Crypto_Rozla"> Rozla-Dev </a> 08-04-2024***
 
 
-[Back to top 👆](#project)
+[Back to top 👆](#Project: Basis info site (NodeJS))
