@@ -1,39 +1,29 @@
-const http = require('http');
-const fs = require('fs')
+const express = require('express');
+const app = express();
 
-const server = http.createServer((req, res) => {
-    console.log('req made');
-     let path = './views/';
-    switch (req.url) {
-        case '/':
-            path += 'index.html';
-            res.statusCode = 200;
-            break;
-        case '/about':
-            path += 'about.html';
-            res.statusCode = 200;
-            break;
-        case '/contact':
-            path += 'contact.html';
-            res.statusCode = 200;
-            break;
-        default:
-            path += '404.html';
-            res.statusCode = 404;
-    }
-    
-    fs.readFile(path, (err, data) => {
-        if (err) {
-            console.log(err);
-            res.end();
-        } else {
-            res.write(data);
-            res.end()
-        }
-    })
-   
-})
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs')
 
-server.listen(8080, 'localhost', () => {
-    console.log('listening on 8080');
-})
+//routes
+app.get('/', (req, res) => {
+    res.render('./index');
+});
+
+app.get('/about', (req, res) => {
+    res.render('./about')
+});
+
+app.get('/contact', (req, res) => {
+    res.render('./contact')
+});
+
+app.use((req, res) => {
+    res.status(404).render('./404', { title: '404' })
+});
+
+app.listen(8080)
+
+
+
+
+
